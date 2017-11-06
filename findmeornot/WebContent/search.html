@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Search Page</title>
+</head>
+
+<body>
+<form method="GET" action="/findmeornot/rest/search">
+<div>
+<label>Animal Name:</label>
+<input type="text" name="animalName">
+<input type="hidden" id="userId" name="userName">
+<input type ="submit" value="Search Now"/>
+</div>
+</form>
+<script type="text/javascript">
+		function getParams(){
+		var idx = document.URL.indexOf('?');
+		var params = new Array();
+			if (idx != -1) {
+			var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+					for (var i=0; i<pairs.length; i++){
+					nameVal = pairs[i].split('=');
+					params[nameVal[0]] = nameVal[1];
+					}
+			}
+		return params;
+		}
+		params = getParams();
+		var userName = unescape(params["userName"]);
+		document.getElementById("userId").value = userName;
+</script>
+</body>
+</html>
